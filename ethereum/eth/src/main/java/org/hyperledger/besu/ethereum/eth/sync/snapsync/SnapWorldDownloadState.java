@@ -274,7 +274,7 @@ public class SnapWorldDownloadState extends WorldDownloadState<SnapDataRequest> 
   public synchronized void startFlatDatabaseHeal(final BlockHeader header) {
     LOG.info("Initiating the healing process for the flat database");
     snapSyncState.setHealFlatDatabaseInProgress(true);
-    final Map<Bytes32, Bytes32> ranges = RangeManager.generateAllRanges(16);
+    final Map<Bytes32, Bytes32> ranges = RangeManager.generateAllRanges(4096);
     ranges.forEach(
         (key, value) ->
             enqueueRequest(
